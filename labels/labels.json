@@ -1,0 +1,30 @@
+{
+  "default": [
+    {"name": "type: bug", "color": "d73a4a", "description": "Something does not work as intended; security weaknesses included", "aliases": ["bug"]},
+    {"name": "type: feature", "color": "a2eeef", "description": "New behaviour, or a change to what a user sees", "aliases": ["enhancement"]},
+    {"name": "type: task", "color": "fef2c0", "description": "Work that changes no behaviour: maintenance, measurement, writing", "aliases": ["chore"]},
+    {"name": "type: epic", "color": "5319e7", "description": "A parent issue; its work lives in its sub-issues"},
+    {"name": "type: question", "color": "d876e3", "description": "A question to answer, not a change to make", "aliases": ["question"]},
+    {"name": "status: blocked", "color": "000000", "description": "Waiting for a decision or for external material", "aliases": ["blocked"]},
+    {"name": "status: idea", "color": "ededed", "description": "Proposed, not decided; it gets a milestone once it is"},
+    {"name": "good first issue", "color": "7057ff", "description": "Good for newcomers"},
+    {"name": "help wanted", "color": "008672", "description": "Extra attention is needed"},
+    {"name": "dependencies", "color": "0366d6", "description": "Pull requests that update a dependency file"}
+  ],
+  "repos": {
+    "Zhengjunliang/multilingual-course-assistant": [
+      {"name": "area: rag", "color": "c5def5", "description": "The retrieval and generation pipeline, rag/"},
+      {"name": "area: eval", "color": "c5def5", "description": "Gold sets, metrics and experiments"},
+      {"name": "area: web", "color": "c5def5", "description": "The Django apps and the HTTP API"},
+      {"name": "area: ui", "color": "c5def5", "description": "The React interface, frontend/"},
+      {"name": "area: infra", "color": "c5def5", "description": "CI, Docker, deployment, dependencies and tooling"},
+      {"name": "area: docs", "color": "c5def5", "description": "The repository's documents", "aliases": ["documentation"]},
+      {"name": "area: thesis", "color": "c5def5", "description": "The thesis text and the graduation steps, outside the repository"},
+      {"name": "area: security", "color": "c5def5", "description": "Security findings and hardening", "aliases": ["security-review"]},
+      {"name": "severity: critical", "color": "b60205", "description": "Exploitable with minimal privileges, or direct exposure of third parties' data"},
+      {"name": "severity: high", "color": "d93f0b", "description": "Weakens defence in depth, traceability or demonstrability"},
+      {"name": "severity: medium", "color": "fbca04", "description": "Widens the attack surface or leaves a documentation gap"},
+      {"name": "severity: low", "color": "0e8a16", "description": "Affects how well the configuration holds up"}
+    ]
+  }
+}

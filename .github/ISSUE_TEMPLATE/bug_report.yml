@@ -1,0 +1,48 @@
+name: Bug report
+description: Something does not work the way its documentation says.
+labels: ["type: bug"]
+body:
+  - type: markdown
+    attributes:
+      value: A security vulnerability never goes in a public issue. Report it from the repository's Security tab, **Report a vulnerability**.
+  - type: textarea
+    id: observed
+    attributes:
+      label: What happened
+      description: The behaviour you saw, with the exact error message if there is one.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+      description: What should have happened, and where that is documented if it is.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: The shortest sequence of commands or clicks that shows it.
+      placeholder: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+  - type: input
+    id: commit
+    attributes:
+      label: Commit
+      description: The commit you ran (`git rev-parse --short HEAD`).
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Operating system and the versions that matter here (Python, Node.js, browser, GPU).
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: Relevant output. It is shown as code, so no backticks are needed.
+      render: text

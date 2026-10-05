@@ -1,0 +1,27 @@
+name: Feature request
+description: A new behaviour, or a change to an existing one.
+labels: ["type: feature"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem
+      description: What you are trying to do, and what stops you.
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: The outcome
+      description: What is true once this is done, written so that someone can check it.
+    validations:
+      required: true
+  - type: textarea
+    id: precedents
+    attributes:
+      label: Precedents
+      description: Products or projects that solve this well, with links.
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
