@@ -4,7 +4,7 @@ Issues and pull requests are welcome in every repository of this account.
 
 ## Issues
 
-- Use the form that fits: a bug report, a feature request or a question. Search open and closed issues first.
+- Use the form that fits: a bug report, a feature request or a task. Search open and closed issues first.
 - A security vulnerability never goes in a public issue: see SECURITY.md.
 
 ## Pull requests

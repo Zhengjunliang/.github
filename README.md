@@ -18,16 +18,18 @@ Defaults that GitHub applies to every repository of this account that has no fil
 
 ## Labels
 
-Every in-scope repository has exactly the labels of `labels/labels.json`: the `default` list, plus the repository's own list under `repos`.
+Every in-scope repository has exactly the labels of `labels/labels.json`: the `default` list, plus the repository's own list under `repos`, if it has one.
 
-| Dimension | Labels | Rule |
-| --- | --- | --- |
-| type | `type: bug` · `type: feature` · `type: task` · `type: epic` · `type: question` | exactly one on every open issue; none on pull requests |
-| area | `area: …`, per repository | one or more where the repository defines them |
-| severity | `severity: critical` · `high` · `medium` · `low`, per repository | exactly one on a security bug |
-| status | `status: blocked` · `status: idea` | at most one |
-| contributors | `good first issue` · `help wanted` | GitHub's own names, which feed its contributor pages |
-| automation | `dependencies` | set by Dependabot only |
+Six labels. A personal account has no issue types, so the type is a label: every open issue carries exactly one of the first four, and the type is not repeated anywhere else.
+
+| Label | Meaning |
+| --- | --- |
+| `bug` | The system behaves differently from what is expected |
+| `feature` | A new capability, or an improvement to an existing one |
+| `task` | Work that changes no behaviour: maintenance, tooling, documents, decisions, delivery phases; a parent issue is a `task` whose parts are its sub-issues |
+| `security` | An internal security finding. A vulnerability someone could exploit is reported privately instead, as SECURITY.md says |
+| `blocked` | Waiting for a person, a decision or an external fact. An issue waiting for another issue uses GitHub's *Blocked by* relationship instead |
+| `dependencies` | Updates a dependency; Dependabot sets it |
 
 Sync, from any directory, in Git Bash or cmd.exe, with `gh` logged in:
 

@@ -8,7 +8,7 @@ Each repository gets the manifest's "default" labels plus its own list under
 "repos". A missing label is created and a different one edited; a label named
 in an entry's "aliases" is renamed to it, so whatever carries it keeps it.
 Every other label is deleted. The labels are then read back and compared with
-the manifest, and open issues without exactly one "type: " label are listed;
+the manifest, and open issues without exactly one of the manifest's "types" are listed;
 either difference exits non-zero. --dry-run prints the steps and changes
 nothing. Keep this file ASCII: cmd.exe pipes it in the console's code page.
 """
@@ -55,12 +55,12 @@ def plan(labels: list[dict], have: dict[str, dict]) -> list[list[str]]:
     return steps
 
 
-def untyped(repo: str) -> list[int]:
+def untyped(repo: str, types: set[str]) -> list[int]:
     rows = json.loads(gh("issue", "list", "-R", repo, "--state", "open", "-L", "1000", "--json", "number,labels"))
     return [
         row["number"]
         for row in rows
-        if sum(label["name"].startswith("type: ") for label in row["labels"]) != 1
+        if sum(label["name"] in types for label in row["labels"]) != 1
     ]
 
 
@@ -83,9 +83,9 @@ def main(argv: list[str]) -> None:
             if have != want:
                 failed = True
                 print(repo, "differs from the manifest:", sorted(have ^ want))
-        if bad := untyped(repo):
+        if bad := untyped(repo, set(manifest["types"])):
             failed = True
-            print(repo, "open issues without exactly one type label:", " ".join(f"#{n}" for n in bad))
+            print(repo, "open issues without exactly one type:", " ".join(f"#{n}" for n in bad))
     sys.exit(1 if failed else 0)
 
 
