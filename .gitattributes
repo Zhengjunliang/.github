@@ -1,0 +1,2 @@
+# Normalise to LF whatever the client's core.autocrlf says, so a Windows checkout and GitHub hold the same bytes.
+* text=auto eol=lf
