@@ -23,7 +23,7 @@ Defaults that GitHub applies to every repository of this account that has no fil
 
     { "extends": ["local>Zhengjunliang/.github"] }
 
-It runs once the hosted Renovate app is installed on that repository with read access to Dependabot alerts. Security fixes come from those alerts and open at any time, without approval or release age. Every other update waits for the monthly run and for seven days after its release. The Dependency Dashboard issue carries `task`, the type every open issue needs.
+It runs once the hosted Renovate app is installed on that repository with read access to Dependabot alerts. Every update waits for the monthly run and for seven days after its release, except a security fix from those alerts, which opens at once. Everything arrives as a pull request: minor and patch updates in one, each major and each minor below 1.0 in its own. No Dependency Dashboard issue is opened, as nothing here waits for an approval given there.
 
 ## Labels
 

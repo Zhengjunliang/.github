@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "description": "The account's shared Renovate preset: one run a month, minor and patch updates in one pull request, majors only after approval, action pins as SHAs, a monthly lock file refresh, every version at least seven days old, no automerge.",
+  "description": "The account's shared Renovate preset: one run a month, minor and patch updates in one pull request and every breaking update in its own, action pins as SHAs, a monthly lock file refresh, every version at least seven days old, no automerge, no Dependency Dashboard.",
   "extends": [
     "config:recommended",
     ":semanticCommits",
@@ -9,7 +9,7 @@
   ],
   "timezone": "Europe/Rome",
   "labels": ["dependencies"],
-  "dependencyDashboardLabels": ["task"],
+  "dependencyDashboard": false,
   "prConcurrentLimit": 5,
   "automerge": false,
   "minimumReleaseAge": "7 days",
@@ -18,21 +18,19 @@
     "enabled": true,
     "schedule": ["* 0-3 1 * *"]
   },
-  "vulnerabilityAlerts": {
-    "schedule": ["at any time"],
-    "dependencyDashboardApproval": false
-  },
   "packageRules": [
     {
-      "description": "A major is a migration, not an update: its pull request opens only once it is approved on the Dependency Dashboard, and it is verified on its own.",
-      "matchUpdateTypes": ["major"],
-      "dependencyDashboardApproval": true
-    },
-    {
-      "description": "Minor, patch and action SHA updates in one pull request: each pull request costs a CI run, and several on the same lockfile conflict with one another.",
+      "description": "Minor, patch and action SHA updates in one pull request: each pull request costs a CI run, and several on the same lockfile conflict with one another. A major stays out of it, in a pull request of its own.",
       "matchUpdateTypes": ["minor", "patch", "digest", "pin", "pinDigest"],
       "groupName": "non-major dependencies",
       "groupSlug": "non-major"
+    },
+    {
+      "description": "Below 1.0 a minor is the breaking change, as a major is above it: it gets a pull request of its own, so that one red build does not hold back the month's group.",
+      "matchCurrentVersion": "/^v?0\\./",
+      "matchUpdateTypes": ["minor"],
+      "groupName": null,
+      "groupSlug": null
     }
   ]
 }
