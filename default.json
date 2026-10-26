@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "description": "The account's shared Renovate preset: one run a month, minor and patch updates in one pull request and every breaking update in its own, action pins as SHAs, a monthly lock file refresh, every version at least seven days old, no automerge, no Dependency Dashboard.",
+  "description": "The account's shared Renovate preset: one run a month, minor and patch updates in one pull request and every breaking update in its own, action pins as SHAs, a monthly lock file refresh, every version at least seven days old, no automerge, no Dependency Dashboard. No hourly cap on new pull requests: the monthly window is a few hours long, and with the Dashboard off an update the cap pushed to next month would wait where nobody sees it; prConcurrentLimit alone bounds the noise.",
   "extends": [
     "config:recommended",
     ":semanticCommits",
@@ -11,6 +11,7 @@
   "labels": ["dependencies"],
   "dependencyDashboard": false,
   "prConcurrentLimit": 5,
+  "prHourlyLimit": 0,
   "automerge": false,
   "minimumReleaseAge": "7 days",
   "minimumReleaseAgeBehaviour": "timestamp-optional",
