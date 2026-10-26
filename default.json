@@ -1,0 +1,38 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "The account's shared Renovate preset: one run a month, minor and patch updates in one pull request, majors only after approval, action pins as SHAs, a monthly lock file refresh, every version at least seven days old, no automerge.",
+  "extends": [
+    "config:recommended",
+    ":semanticCommits",
+    "schedule:monthly",
+    "helpers:pinGitHubActionDigestsToSemver"
+  ],
+  "timezone": "Europe/Rome",
+  "labels": ["dependencies"],
+  "dependencyDashboardLabels": ["task"],
+  "prConcurrentLimit": 5,
+  "automerge": false,
+  "minimumReleaseAge": "7 days",
+  "minimumReleaseAgeBehaviour": "timestamp-optional",
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": ["* 0-3 1 * *"]
+  },
+  "vulnerabilityAlerts": {
+    "schedule": ["at any time"],
+    "dependencyDashboardApproval": false
+  },
+  "packageRules": [
+    {
+      "description": "A major is a migration, not an update: its pull request opens only once it is approved on the Dependency Dashboard, and it is verified on its own.",
+      "matchUpdateTypes": ["major"],
+      "dependencyDashboardApproval": true
+    },
+    {
+      "description": "Minor, patch and action SHA updates in one pull request: each pull request costs a CI run, and several on the same lockfile conflict with one another.",
+      "matchUpdateTypes": ["minor", "patch", "digest", "pin", "pinDigest"],
+      "groupName": "non-major dependencies",
+      "groupSlug": "non-major"
+    }
+  ]
+}
